@@ -18,6 +18,7 @@ namespace MassApp.Models
         public DateTime LastConnectedDate { get; set; }
         public DateTime LastDisconnectedDate { get; set; }
         public int Battery { get; set; }
+        public RegisteredBeacon RegisteredBeacon { get; set; }
 
         //public Beacon(RegisteredBeacon registeredBeacon, IDevice device)
         //{

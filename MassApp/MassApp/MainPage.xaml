@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MassApp"
              x:Class="MassApp.MainPage">
-
-    <Label x:Name="MyLabel" Text="Welcome to Xamarin Forms!" 
+    <StackLayout>
+        <Label x:Name="MyLabel2" Text="Welcome to Xamarin Forms!" 
            BackgroundColor="Transparent"
-           VerticalOptions="Start" 
-           HorizontalOptions="Center" />
+           HorizontalOptions="Center"></Label>
+        <Label x:Name="MyLabel" Text="Welcome to Xamarin Forms!" 
+           BackgroundColor="Transparent"
+           HorizontalOptions="Center"></Label>
+    </StackLayout>
+
 
 </ContentPage>

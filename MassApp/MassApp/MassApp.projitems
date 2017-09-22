@@ -12,11 +12,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\BeaconData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\IStorage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\AppConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Beacon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DataSyncResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Entities\RegisteredBeacon.cs" />
   </ItemGroup>
   <ItemGroup>

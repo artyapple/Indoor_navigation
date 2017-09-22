@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms;
+using MassApp.Common;
+using MassApp.Droid.Common;
 
 namespace MassApp.Droid
 {
@@ -19,18 +22,17 @@ namespace MassApp.Droid
 
 			base.OnCreate (bundle);
 
-            //global::Xamarin.Forms.Forms.Init(this, bundle);
-            //SetAdapter();
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+            RegisterDependencies();
 
             global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new MassApp.App ());
 		}
 
-        //void SetAdapter()
-        //{
-        //    var adapter = new Robotics.Mobile.Core.Bluetooth.LE.Adapter();
-        //    //App.SetAdapter(adapter);
-        //}
+        void RegisterDependencies()
+        {
+            DependencyService.Register<IStorage, StorageConcreate>();
+        }
     }
 }
 
