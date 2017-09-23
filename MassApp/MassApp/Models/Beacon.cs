@@ -11,6 +11,7 @@ namespace MassApp.Models
     public class Beacon : RegisteredBeacon
     { 
         public int Rssi { get; set; }
+        public double DistanceTouser { get; set; }
         public bool Finded { get; set; }
         public DateTime LastFindedDate { get; set; }
         public DateTime CreatedDate { get; set; }

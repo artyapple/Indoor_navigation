@@ -3,14 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MassApp"
              x:Class="MassApp.MainPage">
-    <StackLayout>
-        <Label x:Name="MyLabel2" Text="Welcome to Xamarin Forms!" 
-           BackgroundColor="Transparent"
+    <RelativeLayout HeightRequest="100" WidthRequest="110">
+        <Image x:Name="MyImage" Source="indoor_nav.png" Aspect="AspectFill"></Image>
+        <Image x:Name="ArrowImage" Source="arrow.png" WidthRequest="50" HeightRequest="50" Margin="150, 0, 0, 0" Rotation="0"></Image>
+        <Image x:Name="TargetArrowImage" Source="targetArrow.png" WidthRequest="100" HeightRequest="100" Margin="-2, 10, 0, 0" Rotation="0"></Image>
+
+        <!--<Label x:Name="MyLabel2" Text="Welcome to Xamarin Forms!" 
+           BackgroundColor="White"
            HorizontalOptions="Center"></Label>
         <Label x:Name="MyLabel" Text="Welcome to Xamarin Forms!" 
-           BackgroundColor="Transparent"
-           HorizontalOptions="Center"></Label>
-    </StackLayout>
+           BackgroundColor="White"
+           HorizontalOptions="Center"></Label>-->
+    </RelativeLayout>
 
 
 </ContentPage>

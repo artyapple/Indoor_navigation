@@ -21,6 +21,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Beacon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\DataSyncResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Entities\RegisteredBeacon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Entities\Target.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Position.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
@@ -33,6 +35,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Models\Entities\" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\indoor_nav.png" />
   </ItemGroup>
 </Project>

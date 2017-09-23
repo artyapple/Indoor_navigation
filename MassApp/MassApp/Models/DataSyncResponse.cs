@@ -8,5 +8,6 @@ namespace MassApp.Models
     public class DataSyncResponse
     {
         public List<RegisteredBeacon> Beacons { get; set; }
+        public Position MaxMapPosition { get; set; }
     }
 }
