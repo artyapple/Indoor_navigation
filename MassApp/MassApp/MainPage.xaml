@@ -8,12 +8,12 @@
         <Image x:Name="ArrowImage" Source="arrow.png" WidthRequest="50" HeightRequest="50" Margin="150, 0, 0, 0" Rotation="0"></Image>
         <Image x:Name="TargetArrowImage" Source="targetArrow.png" WidthRequest="100" HeightRequest="100" Margin="-2, 10, 0, 0" Rotation="0"></Image>
 
-        <!--<Label x:Name="MyLabel2" Text="Welcome to Xamarin Forms!" 
+        <Label x:Name="MyLabel2" Text="Welcome to Xamarin Forms!" 
            BackgroundColor="White"
            HorizontalOptions="Center"></Label>
         <Label x:Name="MyLabel" Text="Welcome to Xamarin Forms!" 
            BackgroundColor="White"
-           HorizontalOptions="Center"></Label>-->
+           HorizontalOptions="Center"></Label>
     </RelativeLayout>
 
 

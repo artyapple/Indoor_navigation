@@ -1,6 +1,7 @@
 ﻿using MassApp.Common;
 using MassApp.Models;
 using MassApp.Models.Entities;
+using MassApp.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Robotics.Mobile.Core.Bluetooth.LE;
@@ -56,10 +57,6 @@ namespace MassApp
         {
             base.OnAppearing();
 
-            MyImage.MinimumHeightRequest = Application.Current.MainPage.Height;
-            MyImage.MinimumWidthRequest = Application.Current.MainPage.Width;
-
-            ArrowImage.Margin = new Thickness(150, Application.Current.MainPage.Height / 2);
             //MyLabel.Text = "scanning...";
             _bluetoothAdapter.DeviceDiscovered += BluetoothAdapter_DeviceDiscovered;
             _bluetoothAdapter.ScanTimeoutElapsed += BluetoothAdapter_ScanTimeoutElapsed;
@@ -104,13 +101,12 @@ namespace MassApp
                         _isGoingUp = !_isGoingUp;
                     }
                     _lastPosition = actualPosition;
+
+                    double verticalPos = (Application.Current.MainPage.Height * _lastPosition.ValueY / _maxPosition.ValueY);
+                    //int padding = 50;
+                    //ArrowImage.Margin = new Thickness((Application.Current.MainPage.Width - padding) / 2, verticalPos);
+                    ArrowImage.TranslateTo(0, verticalPos, 2000);
                 }
-
-
-                double verticalPos = Application.Current.MainPage.Height * _lastPosition.ValueY / _maxPosition.ValueY;
-                //int padding = 50;
-                //ArrowImage.Margin = new Thickness((Application.Current.MainPage.Width - padding) / 2, verticalPos);
-                ArrowImage.TranslateTo(0, verticalPos, 2000);
 
                 double diffToTarget = _targetPosition.ValueY - _lastPosition.ValueY;
                 if (diffToTarget != 0)
@@ -123,18 +119,18 @@ namespace MassApp
 
                 PrintPosition(_lastPosition);
 
-                string path = _storage.AppExternalPath;
-                string filename = Path.Combine(path, FileName);
+                //string path = _storage.AppExternalPath;
+                //string filename = Path.Combine(path, FileName);
 
-                string datum = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss:fff");
-                string text = $"{datum} {beacon.Name} {beacon.Rssi}";
-                string readed = string.Empty;
+                //string datum = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss:fff");
+                //string text = $"{datum} {beacon.Name} {beacon.Rssi}";
+                //string readed = string.Empty;
 
 
-                if (File.Exists(filename))
-                    readed = File.ReadAllText(filename);
+                //if (File.Exists(filename))
+                //    readed = File.ReadAllText(filename);
 
-                File.WriteAllText(filename, readed + "\n" + text);
+                //File.WriteAllText(filename, readed + "\n" + text);
 
                 Print();
             }
@@ -307,30 +303,30 @@ namespace MassApp
 
         private void PrintPosition(Position position)
         {
-            //Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-            //{
-            //    MyLabel2.Text = string.Empty;
-            //    if (position != null)
-            //    {
-            //    MyLabel2.Text += $"x: {position.ValueX} y: {position.ValueY}";
-            //    }
-            //    else
-            //    {
-            //        MyLabel2.Text = "position is null";
-            //    }
-            //});
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                MyLabel2.Text = string.Empty;
+                if (position != null)
+                {
+                    MyLabel2.Text += $"x: {position.ValueX} y: {position.ValueY}";
+                }
+                else
+                {
+                    MyLabel2.Text = "position is null";
+                }
+            });
         }
 
         private void Print()
         {
-            //Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-            //{
-            //    //MyLabel.Text = $"ScanCount: {++count} \n";
-            //    //foreach (Beacon beacon in _beaconList)
-            //    //{
-            //    //    MyLabel.Text += $"\n {beacon.Name} {beacon.Rssi}dBm";
-            //    //}
-            //});
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                MyLabel.Text = $"ScanCount: {++count} \n";
+                foreach (Beacon beacon in _beaconList)
+                {
+                    MyLabel.Text += $"\n {beacon.Name} {beacon.Rssi}dBm";
+                }
+            });
         }
     }
 }

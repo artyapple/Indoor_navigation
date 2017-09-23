@@ -22,7 +22,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\DataSyncResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Entities\RegisteredBeacon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Entities\Target.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Event.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventsIds.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Position.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\TouristicApiService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
