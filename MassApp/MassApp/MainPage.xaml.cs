@@ -15,7 +15,7 @@ using Xamarin.Forms;
 
 namespace MassApp
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : CarouselPage
     {
         private int count = 0;
         private List<IDevice> _deviceList;
@@ -51,13 +51,16 @@ namespace MassApp
 
             _registeredBeaconList = response.Beacons;
             _maxPosition = response.MaxMapPosition;
+            _targetPosition.ValueX = _maxPosition.ValueX;
+            _targetPosition.ValueY = _maxPosition.ValueY;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            //MyLabel.Text = "scanning...";
+            TargetArrowImage.RotateTo(0, 500);
+
             _bluetoothAdapter.DeviceDiscovered += BluetoothAdapter_DeviceDiscovered;
             _bluetoothAdapter.ScanTimeoutElapsed += BluetoothAdapter_ScanTimeoutElapsed;
             _bluetoothAdapter.StartScanningForDevices();
@@ -105,7 +108,7 @@ namespace MassApp
                     double verticalPos = (Application.Current.MainPage.Height * _lastPosition.ValueY / _maxPosition.ValueY);
                     //int padding = 50;
                     //ArrowImage.Margin = new Thickness((Application.Current.MainPage.Width - padding) / 2, verticalPos);
-                    ArrowImage.TranslateTo(0, verticalPos, 2000);
+                    ArrowImage.TranslateTo(0, verticalPos, 500);
                 }
 
                 double diffToTarget = _targetPosition.ValueY - _lastPosition.ValueY;
@@ -303,30 +306,42 @@ namespace MassApp
 
         private void PrintPosition(Position position)
         {
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-            {
-                MyLabel2.Text = string.Empty;
-                if (position != null)
-                {
-                    MyLabel2.Text += $"x: {position.ValueX} y: {position.ValueY}";
-                }
-                else
-                {
-                    MyLabel2.Text = "position is null";
-                }
-            });
+            //Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            //{
+            //    MyLabel2.Text = string.Empty;
+            //    if (position != null)
+            //    {
+            //        MyLabel2.Text += $"x: {position.ValueX} y: {position.ValueY}";
+            //    }
+            //    else
+            //    {
+            //        MyLabel2.Text = "position is null";
+            //    }
+            //});
         }
 
         private void Print()
         {
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-            {
-                MyLabel.Text = $"ScanCount: {++count} \n";
-                foreach (Beacon beacon in _beaconList)
-                {
-                    MyLabel.Text += $"\n {beacon.Name} {beacon.Rssi}dBm";
-                }
-            });
+            //    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            //    {
+            //        MyLabel.Text = $"ScanCount: {++count} \n";
+            //        foreach (Beacon beacon in _beaconList)
+            //        {
+            //            MyLabel.Text += $"\n {beacon.Name} {beacon.Rssi}dBm";
+            //        }
+            //    });
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            _targetPosition.ValueX = 0;
+            _targetPosition.ValueY = 0;
+            TargetArrowImage.RotateTo(180, 500);
         }
     }
 }

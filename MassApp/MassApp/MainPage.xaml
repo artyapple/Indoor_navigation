@@ -1,20 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:MassApp"
-             x:Class="MassApp.MainPage">
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="MassApp.MainPage">
+    <ContentPage>
     <RelativeLayout HeightRequest="100" WidthRequest="110">
         <Image x:Name="MyImage" Source="indoor_nav.png" Aspect="AspectFill"></Image>
         <Image x:Name="ArrowImage" Source="arrow.png" WidthRequest="50" HeightRequest="50" Margin="150, 0, 0, 0" Rotation="0"></Image>
-        <Image x:Name="TargetArrowImage" Source="targetArrow.png" WidthRequest="100" HeightRequest="100" Margin="-2, 10, 0, 0" Rotation="0"></Image>
-
-        <Label x:Name="MyLabel2" Text="Welcome to Xamarin Forms!" 
+            <Image x:Name="TargetArrowImage" Source="targetArrow.png" WidthRequest="100" HeightRequest="100" Margin="-2, 10, 0, 0" Rotation="0"></Image>
+            <!--<Label x:Name="MyLabel2" Text="Welcome to Xamarin Forms!" 
            BackgroundColor="White"
            HorizontalOptions="Center"></Label>
         <Label x:Name="MyLabel" Text="Welcome to Xamarin Forms!" 
            BackgroundColor="White"
+           HorizontalOptions="Center"></Label>-->
+        <ListView VerticalOptions="Fill" Margin="0,0,0,0" HorizontalOptions="Fill" IsVisible="False" x:Name="SecondTab">
+            <Label Text="Welcome to Xamarin Forms!" 
+           BackgroundColor="White"
            HorizontalOptions="Center"></Label>
+        </ListView>
     </RelativeLayout>
-
-
 </ContentPage>
+    <ContentPage>
+        <StackLayout>
+            <Button WidthRequest="100" HorizontalOptions="Fill" Clicked="Button_Clicked_1" Text="McDonald's"></Button>
+            <Button WidthRequest="100" HorizontalOptions="Fill" Clicked="Button_Clicked_1" Text="Ferdinandstraße"></Button>
+            <Button WidthRequest="100" HorizontalOptions="Fill" Clicked="Button_Clicked_1" Text="Neuer Wall"></Button>
+            <Button WidthRequest="100" HorizontalOptions="Fill" Clicked="Button_Clicked_1" Text="Rathausmarkt"></Button>
+            <Button WidthRequest="100" HorizontalOptions="Fill" Clicked="Button_Clicked_1" Text="Mönckebergstraße"></Button>
+        </StackLayout>
+    </ContentPage>
+</CarouselPage>
